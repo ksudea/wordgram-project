@@ -1,4 +1,5 @@
 
+
 /**
  * A WordGram represents a sequence of strings
  * just as a String represents a sequence of characters
@@ -21,10 +22,11 @@ public class WordGram {
 	 */
 	public WordGram(String[] source, int start, int size) {
 		myWords = new String[size];
-		myToString = null;
+		for (int i = 0; i < size; i++) {
+			myWords[i] = source[i+start];
+		}
+		myToString = "";
 		myHash = 0;
-
-		// TODO: initialize all instance variable
 	}
 
 	/**
@@ -44,8 +46,7 @@ public class WordGram {
 	 * @return
 	 */
 	public int length(){
-		// TODO: change this
-		return 0;
+		return myWords.length;
 	}
 
 
@@ -59,14 +60,22 @@ public class WordGram {
 		if (! (o instanceof WordGram) || o == null){
 			return false;
 		}
-		// TODO: Complete this method
 
-		return true;
+		else {
+			WordGram wg = (WordGram) o;
+			if (wg.toString().equals(this.toString())) {
+				return true;
+			}
+			return false;
+		}
 	}
 
 	@Override
 	public int hashCode(){
 		// TODO: complete this method: assign to myHash as needed
+		if (myHash == 0) {
+			myHash = this.toString().hashCode();
+		}
 		return myHash;
 	}
 	
@@ -78,14 +87,18 @@ public class WordGram {
 	 */
 	public WordGram shiftAdd(String last) {
 		WordGram wg = new WordGram(myWords,0,myWords.length);
-		// TODO: Complete this method
+		for (int i = 0; i < myWords.length - 1; i++) {
+			wg.myWords[i] = wordAt(i+1);
+		}
+		wg.myWords[myWords.length-1] = last;
 
 		return wg;
 	}
 
 	@Override
 	public String toString(){
-		// TODO: Complete this method, assign to myToString as needed
+		if (myToString.equals("")) {
+			myToString = String.join(" ",myWords); }
 		return myToString;
 	}
 }
