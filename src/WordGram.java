@@ -1,10 +1,8 @@
-
-
 /**
  * A WordGram represents a sequence of strings
  * just as a String represents a sequence of characters
  * 
- * @author YOUR NAME HERE
+ * @author Kadriye Sude Almus
  *
  */
 public class WordGram {
@@ -42,8 +40,8 @@ public class WordGram {
 	}
 
 	/**
-	 * Complete this comment
-	 * @return
+	 * Return number of words in this WordGram
+	 * @return integer length of myWords
 	 */
 	public int length(){
 		return myWords.length;
@@ -51,9 +49,9 @@ public class WordGram {
 
 
 	/**
-	 * Complete appropriate comment here
-	 * @param o
-	 * @return
+	 * Return a boolean representing whether this WordGram equals the object passed in the parameter
+	 * @param o is an object
+	 * @return boolean whether this WordGram equals o
 	 */
 	@Override
 	public boolean equals(Object o) {
@@ -81,9 +79,11 @@ public class WordGram {
 	
 
 	/**
-	 * Create and complete this comment
+	 * Create a new WordGram object with k entries whose first k-1 entries are
+	 * the same as the last k-1 entries of this WordGram
+	 * and whose last entry is the parameter last
 	 * @param last is last String of returned WordGram
-	 * @return
+	 * @return shifted WordGram with last added to the end
 	 */
 	public WordGram shiftAdd(String last) {
 		WordGram wg = new WordGram(myWords,0,myWords.length);
